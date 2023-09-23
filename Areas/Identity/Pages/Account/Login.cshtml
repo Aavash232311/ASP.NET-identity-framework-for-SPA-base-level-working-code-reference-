@@ -1,0 +1,151 @@
+﻿@page
+@model LoginModel
+<div>
+    <center>
+        <div asp-validation-summary="ModelOnly" style="width: 90%;" class="text-danger alert alert-danger" role="alert">
+        </div>
+        <div id="loginFrame">
+            <form id="account" method="post"> <br />
+                <span>Few steps to let you in!</span>
+                <hr style="visibility: hidden;" />
+                <label asp-for="Input.Email">
+                    <span class="labelContent">email</span>
+                </label> <br />
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <label asp-for="Input.Password">
+                    <span class="labelContent">password</span>
+                </label> <br />
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password"
+                        aria-required="true" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="checkbox mb-3">
+                    <label asp-for="Input.RememberMe" class="form-label">
+                        <input class="form-check-input" asp-for="Input.RememberMe" />
+                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                    </label>
+                </div>
+                <div>
+                    <button id="login-submit" type="submit" class="button-87">
+                        login
+                    </button>
+                </div>
+                <div class="other-options">
+                    <p>
+                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                    </p>
+                    <p>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                    </p>
+                    <p>
+                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+        <div class="row"></div>
+    </center>
+</div>
+</div>
+<style>
+    li {
+        list-style: none;
+    }
+
+    .labelContent {
+        float: left;
+        margin-left: 25px;
+        font-weight: lighter;
+    }
+
+    label {
+        width: 100%;
+        float: left;
+        margin-bottom: 5px;
+    }
+
+    input {
+        outline-width: 0;
+    }
+
+    a {
+        text-decoration: none;
+        font-weight: lighter;
+        float: left;
+        margin-top: 5px;
+    }
+
+    a:hover {
+        color: #5643CC;
+    }
+
+    .other-options {
+        float: left;
+        text-decoration: none;
+        margin-left: 20px;
+        margin-top: 5px;
+    }
+
+    .checkbox {
+        float: left;
+        margin-left: 20px;
+    }
+
+    #loginFrame {
+        width: 50%;
+        margin-top: 10px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        user-select: none;
+        height: 515px;
+    }
+
+    .form-control,
+    .btn {
+        width: 90%;
+    }
+
+    .button-87 {
+        margin: 10px;
+        padding: 15px 30px;
+        text-align: center;
+        text-transform: uppercase;
+        transition: 0.5s;
+        background-size: 200% auto;
+        color: white;
+        border-radius: 10px;
+        display: block;
+        border: 0px;
+        font-weight: 700;
+        box-shadow: 0px 0px 14px -7px #f09819;
+        background-image: linear-gradient(45deg, #FF512F 0%, #F09819 51%, #FF512F 100%);
+        cursor: pointer;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        width: 90%;
+    }
+
+    .button-87:hover {
+        background-position: right center;
+        /* change the direction of the change here */
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .button-87:active {
+        transform: scale(0.95);
+    }
+
+    @@media (max-width: 720px) {
+        #loginFrame {
+            width: 100%;
+        }
+    }
+</style>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
