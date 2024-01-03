@@ -24,7 +24,7 @@ public class EmailSender : IEmailSender
     {
         await Execute(subject, message, toEmail);
     }
-    // I am replacing that fucking twilo dependancy since it's impossible to login
+
     public async Task Execute(string subject, string message, string toEmail)
     {
         var email = new MimeMessage();
